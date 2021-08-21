@@ -1,5 +1,9 @@
 #include "base.hpp"
 
+inline ll mod(ll a, ll m) {
+    return (a % m + m) % m;
+}
+
 ll modPow(ll a, ll n, ll p) {
     if (n == 0) return 1;
     if (n == 1) return a % p;
