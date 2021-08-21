@@ -35,6 +35,15 @@
         ],
         "description": "Math - Enum divisors \n O(sqrt(N))"
     },
+    "Mod": {
+        "prefix": "cppMod",
+        "body": [
+            "inline ll mod(ll a, ll m) {",
+            "    return (a % m + m) % m;",
+            "}"
+        ],
+        "description": "Math - Mod func supports for negative numbers \n O(1)"
+    },
     "ModPow": {
         "prefix": "cppModPow",
         "body": [
