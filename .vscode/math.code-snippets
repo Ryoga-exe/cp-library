@@ -16,7 +16,7 @@
             "    return res;",
             "}"
         ],
-        "description": "Math - Prime factorize"
+        "description": "Math - Prime factorize \n O(sqrt(N))"
     },
     "EnumDivisors": {
         "prefix": "cppEnumDivisors",
@@ -33,7 +33,7 @@
             "    return res;",
             "}"
         ],
-        "description": "Math - Enum divisors"
+        "description": "Math - Enum divisors \n O(sqrt(N))"
     },
     "ModPow": {
         "prefix": "cppModPow",
@@ -46,7 +46,7 @@
             "    return (t * t) % p;",
             "}"
         ],
-        "description": "Math - Mod pow"
+        "description": "Math - Mod pow \n O(log(N))"
     },
     "ModInv": {
         "prefix": "cppModInv",
@@ -55,7 +55,7 @@
             "    return modPow(a, p - 2, p);",
             "}"
         ],
-        "description": "Math - Mod inv"
+        "description": "Math - Mod inv \n O(log(N))"
     },
     "ModInvE": {
         "prefix": "cppModInvE",
