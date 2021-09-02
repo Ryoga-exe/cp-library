@@ -82,6 +82,22 @@
             "}"
         ],
         "description": "Math - Mod Inv E"
-    }
-
+    },
+    "Round functions": {
+        "prefix": "cppRound",
+        "body": [
+            "inline ll Round(ll a, ll b) {",
+            "    return (a + (b / 2)) / b;",
+            "}",
+            "",
+            "inline ll RoundUp(ll a, ll b) {",
+            "    return (a + (b - 1)) / b;",
+            "}",
+            "",
+            "inline ll RoundDown(ll a, ll b) {",
+            "    return a / b;",
+            "}"
+        ],
+        "description": "Math - Round functions"
+      }
 }
