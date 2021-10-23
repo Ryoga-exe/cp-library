@@ -32,4 +32,4 @@
 *.app
 
 # For competitive programming
-main.cpp
+/code
