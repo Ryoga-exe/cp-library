@@ -11,6 +11,6 @@ using namespace std;
 using ll = long long;
 using Graph2 = vector<vector<int>>;
 constexpr int INF32 = 1<<30;
-constexpr ll INF64 = 1LL<<30;
+constexpr ll INF64 = 1LL<<60;
 template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return true; } return false; }
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return true; } return false; }
