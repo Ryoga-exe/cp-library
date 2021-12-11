@@ -7,7 +7,7 @@ struct second_compare {
             return a.second < b.second;
         }
         else {
-            return true;
+            return a.first < b.first;
         }
     }
 };
