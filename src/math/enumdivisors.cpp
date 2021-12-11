@@ -5,9 +5,9 @@ vector<ll> enum_divisors(ll n) {
     for (ll i = 1; i * i <= n; i++) {
         if (n % i == 0) {
             res.push_back(i);
-            if (n/i != i) res.push_back(n/i);
+            if (n / i != i) res.push_back(n / i);
         }
     }
-    sort(res.begin(), res.end());
+    sort(all(res));
     return res;
 }
