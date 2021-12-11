@@ -9,17 +9,11 @@
 #define all(v) begin(v), end(v)
 using namespace std;
 using ll = long long;
-using ull = unsigned long long;
-using P = pair<int, int>;
-using PLL = pair<ll, ll>;
-using VI = vector<int>;
-using VLL = vector<ll>;
-using VB = vector<bool>;
-using VP = vector<P>;
 using Graph2 = vector<vector<int>>;
+constexpr int INF32 = 1<<30;
+constexpr ll INF64 = 1LL<<30;
 template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return true; } return false; }
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return true; } return false; }
-bool second_compare(P a,P b){if(a.second!=b.second){return a.second<b.second;} else return true;}
 
 int main() {
     
