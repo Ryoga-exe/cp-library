@@ -1,7 +1,7 @@
 #include "graph.hpp"
 
-void dijkstra(const WeightedGraph& g, int s, vector<ll>& dist) {
-    int n = g.size();
+void dijkstra(const WeightedGraph& g, const int s, vector<ll>& dist) {
+    const int n = g.size();
     dist.assign(n, INF64);
     priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> que;
     dist[s] = 0;
@@ -18,8 +18,8 @@ void dijkstra(const WeightedGraph& g, int s, vector<ll>& dist) {
     }
 }
 
-void dijkstra(const WeightedGraph& g, int s, vector<ll>& dist, vector<int>& prev) {
-    int n = g.size();
+void dijkstra(const WeightedGraph& g, const int s, vector<ll>& dist, vector<int>& prev) {
+    const int n = g.size();
     dist.assign(n, INF64);
     prev.assign(n, -1);
     priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> que; 
