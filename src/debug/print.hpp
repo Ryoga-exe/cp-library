@@ -17,8 +17,6 @@
 #include <type_traits>
 #include <utility>
 
-#define $(...) debug_print::multi_print(#__VA_ARGS__, __VA_ARGS__)
-
 namespace debug_print {
   std::ostream& os = std::cerr;
 
