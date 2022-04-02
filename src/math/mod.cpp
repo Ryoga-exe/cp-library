@@ -4,12 +4,14 @@ inline ll mod(ll a, ll m) {
     return (a % m + m) % m;
 }
 
-ll modPow(ll a, ll n, ll p) {
-    if (n == 0) return 1;
-    if (n == 1) return a % p;
-    if (n % 2 == 1) return (a * modPow(a, n - 1, p)) % p;
-    ll t = modPow(a, n / 2, p);
-    return (t * t) % p;
+ll modPow(ll a, ll n, ll mod) {
+    ll res = 1;
+    while (n > 0) {
+        if (n & 1) res = res * a % mod;
+        a = a * a % mod;
+        n >>= 1;
+    }
+    return res;
 }
 
 ll modInv(ll a, ll p) {
