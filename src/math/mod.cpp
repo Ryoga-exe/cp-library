@@ -4,11 +4,11 @@ inline ll mod(ll a, ll m) {
     return (a % m + m) % m;
 }
 
-ll modPow(ll a, ll n, ll mod) {
+ll modPow(ll a, ll n, ll p) {
     ll res = 1;
     while (n > 0) {
-        if (n & 1) res = res * a % mod;
-        a = a * a % mod;
+        if (n & 1) res = res * a % p;
+        a = a * a % p;
         n >>= 1;
     }
     return res;
