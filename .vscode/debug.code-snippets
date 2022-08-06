@@ -9,6 +9,7 @@
             "    #define $(...) 0",
             "#endif"
         ],
-        "description": "debug print"
+        "description": "debug print",
+        "scope": "cpp",
     }
 }

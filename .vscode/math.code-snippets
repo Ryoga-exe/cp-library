@@ -16,7 +16,8 @@
             "    return res;",
             "}"
         ],
-        "description": "Math - Prime factorize \n O(sqrt(N))"
+        "description": "Math - Prime factorize \n O(sqrt(N))",
+        "scope": "cpp",
     },
     "EnumDivisors": {
         "prefix": "cppEnumDivisors",
@@ -33,7 +34,8 @@
             "    return res;",
             "}"
         ],
-        "description": "Math - Enum divisors \n O(sqrt(N))"
+        "description": "Math - Enum divisors \n O(sqrt(N))",
+        "scope": "cpp",
     },
     "Mod": {
         "prefix": "cppMod",
@@ -42,7 +44,8 @@
             "    return (a % m + m) % m;",
             "}"
         ],
-        "description": "Math - Mod func supports for negative numbers \n O(1)"
+        "description": "Math - Mod func supports for negative numbers \n O(1)",
+        "scope": "cpp",
     },
     "ModPow": {
         "prefix": "cppModPow",
@@ -57,7 +60,8 @@
             "    return res;",
             "}"
         ],
-        "description": "Math - Mod pow \n O(log(N))"
+        "description": "Math - Mod pow \n O(log(N))",
+        "scope": "cpp",
     },
     "ModInv": {
         "prefix": "cppModInv",
@@ -66,7 +70,8 @@
             "    return modPow(a, p - 2, p);",
             "}"
         ],
-        "description": "Math - Mod inv \n O(log(N))"
+        "description": "Math - Mod inv \n O(log(N))",
+        "scope": "cpp",
     },
     "ModInvE": {
         "prefix": "cppModInvE",
@@ -83,7 +88,8 @@
             "    return u;",
             "}"
         ],
-        "description": "Math - Mod Inv E"
+        "description": "Math - Mod Inv E",
+        "scope": "cpp",
     },
     "Round functions": {
         "prefix": "cppRound",
@@ -100,6 +106,7 @@
             "    return a / b;",
             "}"
         ],
-        "description": "Math - Round functions"
+        "description": "Math - Round functions",
+        "scope": "cpp",
     }
 }

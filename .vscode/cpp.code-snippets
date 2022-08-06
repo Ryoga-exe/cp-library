@@ -20,10 +20,12 @@
             "template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return true; } return false; }",
             "",
             "int main() {",
-            "    $1",
+            "    $0",
             "    return 0;",
             "}"
         ],
-        "description": "Template for main.cpp"
+        "description": "Template for main.cpp",
+        "scope": "cpp",
+        "isFileTemplate": true,
     }
 }
