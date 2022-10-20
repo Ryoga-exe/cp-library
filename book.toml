@@ -6,7 +6,7 @@ src = "docs"
 title = "cp-library Document"
 
 [build]
-build-dir = "build"
+build-dir = "build/book"
 
 [output.html]
 mathjax-support = true
