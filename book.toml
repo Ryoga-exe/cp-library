@@ -12,7 +12,7 @@ build-dir = "build/book"
 [output.html]
 git-repository-url = "https://github.com/Ryoga-exe/cp-library"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/Ryoga-exe/cp-library/tree/main/docs/{path}"
+edit-url-template = "https://github.com/Ryoga-exe/cp-library/tree/main/{path}"
 mathjax-support = true
 site-url = "/cp-library/"
 input-404 = "404.md"
