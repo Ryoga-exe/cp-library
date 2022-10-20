@@ -1,0 +1,12 @@
+[book]
+authors = ["Ryoga.exe"]
+language = "ja"
+multilingual = false
+src = "docs"
+title = "cp-library Document"
+
+[build]
+build-dir = "build"
+
+[output.html]
+mathjax-support = true
