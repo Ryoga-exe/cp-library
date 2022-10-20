@@ -36,3 +36,6 @@
 main.cpp
 in
 out
+
+# mdBook
+/build
