@@ -1,12 +1,18 @@
 [book]
+title = "cp-library Document"
 authors = ["Ryoga.exe"]
+description = "Ryoga.exe の競プロ用ライブラリ・スニペットのドキュメント"
 language = "ja"
 multilingual = false
 src = "docs"
-title = "cp-library Document"
 
 [build]
 build-dir = "build/book"
 
 [output.html]
+git-repository-url = "https://github.com/Ryoga-exe/cp-library"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/Ryoga-exe/cp-library/tree/main/docs/{path}"
 mathjax-support = true
+site-url = "/cp-library/"
+input-404 = "404.md"
