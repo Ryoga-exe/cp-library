@@ -1,5 +1,11 @@
-#include "base.hpp"
+#include <iostream>
+#include <type_traits>
+#include <utility>
 
+/// start
+/// @prefix cpModInt
+/// @description ModInt : 自動で mod を取ってくれる構造体
+/// @isFileTemplate false
 template<long long m, std::enable_if_t<(1 <= m)>* = nullptr>
 struct modint {
 public:
@@ -18,8 +24,8 @@ public:
         long long a = m_value, b = m, u = 1, v = 0;
         while(b) {
             long long t = a / b;
-            swap(a -= t * b, b);
-            swap(u -= t * v, v);
+            std::swap(a -= t * b, b);
+            std::swap(u -= t * v, v);
         }
         return modint(u);
     }
