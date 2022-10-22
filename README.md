@@ -30,23 +30,23 @@ pip install PyYAML
 python generate-snippet.py
 ```
 
-## How to add to library｜ライブラリ追加手順
+## Add new file to library｜ライブラリ追加手順
 
 1. ファイル (`src/<CATEGORY>/<PATH>.hpp` 等) を追加
   
-  prefix などは以下の通りに記述して設定する
-  ```cpp
-  /// @prefix <>
-  /// @description <>
-  /// @isFileTemplate false
-  ```
+    prefix などは以下の通りに記述して設定する
+    ```cpp
+    /// @prefix <>
+    /// @description <>
+    /// @isFileTemplate false
+    ```
 
-  ここで以下の形式の `start` がない場合はファイルのはじめからスニペットに登録される、ある場合は `start` の次の行から登録される
-  ```cpp
-  /// start
-  ```
-
-  `src/` 直下に新たにディレクトリを作成してその中にファイルを追加した場合、`config.yml` を更新する
+    ここで以下の形式の `start` がない場合はファイルのはじめからス ニペットに登録される、ある場合は `start` の次の行から登録され  る
+    ```cpp
+    /// start
+    ```
+    
+    `src/` 直下に新たにディレクトリを作成してその中にファイルを追加 した場合、`config.yml` を更新する
 
 2. ドキュメントを追加
 
