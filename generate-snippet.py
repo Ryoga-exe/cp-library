@@ -35,7 +35,7 @@ def create_snippet(file_path):
                 else :
                     options[key] = False
             else :
-                options[key] = value
+                options[key] = value.replace('\\n', '\n')
     
     snippet = {
         'prefix': options.get('prefix', name),
