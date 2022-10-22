@@ -1,3 +1,6 @@
+/// @prefix cpp
+/// @description template : 競プロ用テンプレート
+/// @isFileTemplate true
 #include <bits/stdc++.h>
 #define _overload3(_1,_2,_3,name,...) name
 #define FOR(i,a,b) for(int i=int(a);i<int(b);++i)
@@ -16,6 +19,6 @@ template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return true
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return true; } return false; }
 
 int main() {
-    
+    /** $0 **/
     return 0;
 }
