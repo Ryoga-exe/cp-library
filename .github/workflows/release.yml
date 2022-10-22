@@ -28,11 +28,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            build/snippet/data-structure.code-snippets
-            build/snippet/debug.code-snippets
-            build/snippet/graph.code-snippets
-            build/snippet/math.code-snippets
-            build/snippet/snippets.code-snippets
-            build/snippet/string.code-snippets
-            build/snippet/template.code-snippets
-            build/snippet/utils.code-snippets
+            ./build/snippet/*.code-snippets
