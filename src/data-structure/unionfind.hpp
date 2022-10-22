@@ -1,6 +1,10 @@
 #include <vector>
 #include <utility>
 
+/// start
+/// @prefix cpUnionFind
+/// @description UnionFind (Disjoint Set Union) : 素集合データ構造 \n O(𝛼(n))
+/// @isFileTemplate false
 struct UnionFind {
     std::vector<int> par;
     inline UnionFind(const size_t n) noexcept : par(n, -1) {}
