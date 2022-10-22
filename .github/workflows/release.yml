@@ -23,8 +23,6 @@ jobs:
       - name: Generate Snippet
         run: |
           python generate-snippet.py
-          ls .
-          ls ./build/snippet/
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
