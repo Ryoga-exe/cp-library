@@ -6,7 +6,7 @@
 /// @isFileTemplate false
 struct second_compare {
     template<typename T, typename U>
-    inline bool operator() (const std::pair<T, U> a, const std::pair<T, U> b) const noexcept {
+    inline constexpr bool operator() (const std::pair<T, U> a, const std::pair<T, U> b) const noexcept {
         return (a.second != b.second ? a.second < b.second : a.first < b.first);
     }
 };
