@@ -6,7 +6,7 @@
 /// @prefix cpDivisors
 /// @description Enumerate divisors of n : n の約数を列挙します \n O(sqrt(N))
 /// @isFileTemplate false
-std::vector<long long> Divisors(long long n) {
+std::vector<long long> Divisors(const long long n) noexcept {
     std::vector<long long> res;
     for (long long i = 1; i * i <= n; i++) {
         if (n % i == 0) {
