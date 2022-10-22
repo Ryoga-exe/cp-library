@@ -5,7 +5,7 @@
 /// @prefix cpModInv
 /// @description ModInv : mod p での a の逆元 (a^{-1}) を計算します \n O(log(p))
 /// @isFileTemplate false
-long long ModInv(long long a, long long p) {
+inline constexpr long long ModInv(long long a, const long long p) noexcept {
     long long b = p, u = 1, v = 0;
     while (b) {
         long long t = a / b;
