@@ -1,6 +1,6 @@
 # cp-library
 
-[![LICENSE](https://img.shields.io/github/license/ryoga-exe/cp-library)](https://github.com/Ryoga-exe/cp-library/blob/main/LICENSE)
+[![LICENSE](https://img.shields.io/github/license/ryoga-exe/cp-library)](/LICENSE)
 [![Issues](https://img.shields.io/github/issues/ryoga-exe/cp-library)](https://github.com/Ryoga-exe/cp-library/issues)
 ![Lines of code](https://img.shields.io/tokei/lines/github/ryoga-exe/cp-library)
 [![Deploy to GitHub Pages](https://github.com/Ryoga-exe/cp-library/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/Ryoga-exe/cp-library/actions/workflows/gh-pages.yml)
@@ -10,7 +10,7 @@
 
 ## What is this?｜これは何？
 
-[Document](ryoga-exe.github.io/cp-library/)
+[Document](https://ryoga-exe.github.io/cp-library/)
 
 Ryoga.exe's Library and Code snippets for competitive programming.
 
@@ -34,14 +34,14 @@ python generate-snippet.py
 
 1. ファイル (`src/<CATEGORY>/<PATH>.hpp` 等) を追加
   
-    prefix などは以下の通りに記述して設定する
+    prefix などは以下の通りに記述して設定する ([例](/src/data-structure/unionfind.hpp))
     ```cpp
     /// @prefix <>
     /// @description <>
     /// @isFileTemplate false
     ```
-
-    ここで以下の形式の `start` がない場合はファイルのはじめからス ニペットに登録される、ある場合は `start` の次の行から登録され  る
+    
+    ここで以下の形式の `start` がない場合はファイルのはじめからス ニペットに登録される、ある場合は `start` の次の行から登録される
     ```cpp
     /// start
     ```
@@ -59,4 +59,4 @@ git push origin --tag
 
 ## License｜ライセンス
 
-MIT License. [LICENSE file](https://github.com/Ryoga-exe/cp-library/blob/main/LICENSE) for more information.
+MIT License. [LICENSE file](/LICENSE) for more information.
