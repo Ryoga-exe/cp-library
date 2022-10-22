@@ -1,9 +1,15 @@
-#include "base.hpp"
+#include <cassert>
+#include <algorithm>
+#include <vector>
 
+/// start
+/// @prefix cpSegmentTree
+/// @description SegmentTree : セグメント木
+/// @isFileTemplate false
 template<class S, S (*op)(S, S), S (*e)()>
 struct SegmentTree {
     int n, sz, lg;
-    vector<S> d;
+    std::vector<S> d;
     SegmentTree(const int n) : SegmentTree(vector<S>(n, e())) {}
     SegmentTree(const vector<S>& v) : n(int(v.size())){
         lg = 0;
@@ -104,7 +110,7 @@ struct SegmentTree {
 };
 
 int op_RMQ(int a, int b) {
-    return min(a, b);
+    return std::min(a, b);
 }
 int e_RMQ() {
     return (int)(1e9);
