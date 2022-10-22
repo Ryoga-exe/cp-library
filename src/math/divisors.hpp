@@ -2,6 +2,10 @@
 #include <utility>
 #include <algorithm>
 
+/// start
+/// @prefix cpDivisors
+/// @description Enumerate divisors of n : n の約数を列挙します \n O(sqrt(N))
+/// @isFileTemplate false
 std::vector<long long> Divisors(long long n) {
     std::vector<long long> res;
     for (long long i = 1; i * i <= n; i++) {
