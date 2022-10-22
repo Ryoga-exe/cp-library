@@ -1,0 +1,16 @@
+config:
+  build-dir: ./build/snippet
+  ignore:
+    - '*.md'
+    - 'print.hpp'
+
+snippet:
+  - template: src/template/
+  - data-structure: src/data-structure/
+  - debug: src/debug/
+
+scope:
+  cpp: 'cpp'
+  hpp: 'cpp'
+  ipp: 'cpp'
+  py: 'py'
