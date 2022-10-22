@@ -1,5 +1,5 @@
 config:
-  build-dir: ./build/snippet
+  build-dir: [build/snippet, .vscode/]
   ignore:
     - '*.md'
     - 'print.hpp'

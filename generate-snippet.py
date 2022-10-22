@@ -6,7 +6,6 @@ import sys
 
 OUTPUT_EXTENSION = '.code-snippets'
 
-g_build_dir = './'
 g_ignore = []
 g_scope = []
 
@@ -73,8 +72,10 @@ if __name__ == '__main__':
     config_scope = config.get('scope', 'None')
     config_snippet = config.get('snippet', 'None')
 
+    build_dir = './'
+
     if config_general != 'None':
-        g_build_dir = config_general.get('build-dir', './')
+        build_dir = config_general.get('build-dir', './')
         g_ignore = config_general.get('ignore', [])
     
     if config_scope != 'None':
@@ -85,10 +86,15 @@ if __name__ == '__main__':
             for group, dir_name in item.items():
                 snippets = create_snippets(dir_name)
                 output_file_name = group + OUTPUT_EXTENSION
-                output = str(os.path.join(g_build_dir, output_file_name))
 
-                with open(output, mode='w') as f:
-                    f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
-                
+                if type(build_dir) is str:
+                    output = str(os.path.join(build_dir, output_file_name))
+                    with open(output, mode='w') as f:
+                        f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
+                elif type(build_dir) is list:
+                    for elem in build_dir:
+                        output = str(os.path.join(elem, output_file_name))
+                    with open(output, mode='w') as f:
+                        f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
                 print("Created", output_file_name, "from", dir_name)
 
