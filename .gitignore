@@ -32,10 +32,13 @@
 *.app
 
 # For competitive programming
-/code
+code/
 main.cpp
 in
 out
 
 # mdBook
-/build
+build/
+
+# code-snippets
+.vscode/*.code-snippets
