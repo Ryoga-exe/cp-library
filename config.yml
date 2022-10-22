@@ -5,9 +5,14 @@ config:
     - 'print.hpp'
 
 snippet:
-  - template: src/template/
   - data-structure: src/data-structure/
   - debug: src/debug/
+  - graph: src/graph/
+  - math: src/math/
+  - snippets: src/snippets/
+  - string: src/string/
+  - template: src/template/
+  - utils: src/utils/
 
 scope:
   cpp: 'cpp'
