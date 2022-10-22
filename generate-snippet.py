@@ -64,6 +64,13 @@ def create_snippets(dir_name):
 
     return snippets
 
+def write_file(snippets, directory, filename):
+    output = str(os.path.join(directory, filename))
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with open(output, mode='w') as f:
+        f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
+
 if __name__ == '__main__':
     with open('./config.yml') as file:
         config = yaml.safe_load(file)
@@ -85,16 +92,13 @@ if __name__ == '__main__':
         for item in config_snippet:
             for group, dir_name in item.items():
                 snippets = create_snippets(dir_name)
-                output_file_name = group + OUTPUT_EXTENSION
+                filename = group + OUTPUT_EXTENSION
 
                 if type(build_dir) is str:
-                    output = str(os.path.join(build_dir, output_file_name))
-                    with open(output, mode='w') as f:
-                        f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
+                    write_file(snippets, build_dir, filename)
                 elif type(build_dir) is list:
-                    for elem in build_dir:
-                        output = str(os.path.join(elem, output_file_name))
-                    with open(output, mode='w') as f:
-                        f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
-                print("Created", output_file_name, "from", dir_name)
+                    for directory in build_dir:
+                        write_file(snippets, directory, filename)
+
+                print("Created", filename, "from", dir_name)
 
