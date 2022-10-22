@@ -1,6 +1,9 @@
-#include "base.hpp"
+#include <map>
 
-// [l, r] の区間を管理
+/// start
+/// @prefix cpSegmentSet
+/// @description [l, r] の区間を管理するデータ構造
+/// @isFileTemplate false
 class SegmentSet : public std::map<signed, signed> {
 public:
     // doMergeAdjacentSegment : [l, c] と [c+1, r] をマージするか
