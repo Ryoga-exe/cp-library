@@ -54,21 +54,37 @@ public:
         if (left == right) {
             return { m_set.end(), false };
         }
-        auto itr_l = m_set.upper_bound({ left, left });
-        auto itr_r = m_set.upper_bound({ right, right });
-        if (itr_l != m_set.begin()) {
-            if (std::prev(itr_l)->second >= left) {
-                itr_l--;
+        auto itr = m_set.lower_bound({ left, right });
+        if (itr != m_set.end() && itr->first == left) {
+            return { itr, false };
+        }
+        if (itr != m_set.begin()) {
+            if (const auto prev_itr = std::prev(itr); prev_itr->first != left && right <= prev_itr->second) {
+                return { std::prev(itr), false };
             }
         }
-        auto tl = left, tr = right;
-        if (itr_l != itr_r) {
-            tl = std::min(left, itr_l->first);
-            tr = std::max(right, std::prev(itr_r)->second);
-            m_set.erase(itr_l, itr_r);
+        itr = m_set.emplace_hint(itr, left, right);
+        while (itr != std::prev(m_set.end()) && std::next(itr)->first <= itr->second) {
+            if (std::next(itr)->second <= itr->second) {
+                m_set.erase(std::next(itr));
+            }
+            else {
+                itr = m_set.emplace_hint(std::next(itr), itr->first, std::next(itr)->second);
+                m_set.erase(std::prev(itr));
+                m_set.erase(std::next(itr));
+            }
         }
-        m_set.insert({ tl, tr });
-        return { itr_l, true };
+        while (itr != m_set.begin() && itr->first <= std::prev(itr)->second) {
+            if (itr->first == std::prev(itr)->first) {
+                m_set.erase(std::prev(itr));
+            }
+            else {
+                itr = m_set.emplace_hint(itr, std::prev(itr)->first, itr->second);
+                m_set.erase(std::prev(itr));
+                m_set.erase(std::next(itr));
+            }
+        }
+        return { itr, true };
     }
     void erase(const value_type left, const value_type right) {
         assert(left <= right);
