@@ -59,4 +59,4 @@ git push origin --tag
 
 ## License｜ライセンス
 
-MIT License. [LICENSE file](/LICENSE) for more information.
+Licensed under a CC0 license. See [LICENSE file](/LICENSE) for more further details.
