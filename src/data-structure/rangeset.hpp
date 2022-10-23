@@ -64,7 +64,7 @@ public:
         auto tl = left, tr = right;
         if (itr_l != itr_r) {
             tl = std::min(left, itr_l->first);
-            tr = std::min(right, std::prev(itr_r)->second);
+            tr = std::max(right, std::prev(itr_r)->second);
             m_set.erase(itr_l, itr_r);
         }
         m_set.insert({ tl, tr });
