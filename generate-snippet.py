@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import glob
 import json
@@ -5,6 +7,7 @@ import yaml
 import sys
 
 OUTPUT_EXTENSION = '.code-snippets'
+CONFIG_FILE = './config.yml'
 
 g_ignore = []
 g_scope = []
@@ -66,13 +69,12 @@ def create_snippets(dir_name):
 
 def write_file(snippets, directory, filename):
     output = str(os.path.join(directory, filename))
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    os.makedirs(directory, exist_ok=True)
     with open(output, mode='w') as f:
         f.write(json.dumps(snippets, ensure_ascii=False, indent=4))
 
 if __name__ == '__main__':
-    with open('./config.yml') as file:
+    with open(CONFIG_FILE) as file:
         config = yaml.safe_load(file)
     
     config_general = config.get('config', 'None')
