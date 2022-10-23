@@ -23,11 +23,11 @@ def create_snippet(file_path):
     options = {}
 
     for index, line in enumerate(lines):
-        if line == '/// start':
+        if line.strip() == '/// start':
             startline = index + 1
-        if line.startswith('/// @'):
-            key = line[5:].split(' ')[0]
-            value = line[5 + len(key) + 1:]
+        if line.strip().startswith('/// @'):
+            key = line.strip()[5:].split(' ')[0]
+            value = line.strip()[5 + len(key) + 1:]
             if key == 'isFileTemplate':
                 if value == 'true':
                     options[key] = True
@@ -101,4 +101,4 @@ if __name__ == '__main__':
                         write_file(snippets, directory, filename)
 
                 print("Created", filename, "from", dir_name)
-
+ 
