@@ -16,10 +16,8 @@ public:
     using container_type = std::set<range_type>;
     using iterator = typename container_type::iterator;
     using size_type = typename container_type::size_type;
-
 private:
     container_type m_set;
-
 public:
     explicit RangeSet() = default;
     iterator begin() const noexcept {
@@ -97,19 +95,37 @@ public:
             m_set.insert({ right, tr });
         }
     }
-    iterator find(const value_type left, const value_type right) const {
-        // todo
-    }
     iterator find(const value_type x) const {
-        // todo
+        auto itr = m_set.lower_bound({ x, x });
+        if (itr == begin() || (--itr)->second < x) {
+            return m_set.end();
+        }
+        return itr;
+    }
+    iterator find(const value_type left, const value_type right) const {
+        assert(left <= right);
+        auto itr_l = find(left);
+        auto itr_r = find(right);
+        if (itr_l == m_set.end() || itr_r == m_set.end()) {
+            return m_set.end();
+        }
+        if (itr_l == itr_r) {
+            return itr_l;
+        }
+        else {
+            return m_set.end();
+        }
     }
     bool contains(const value_type left, const value_type right) const {
-        // todo
+        assert(left <= right);
+        return find(left, right) != m_set.end();
     }
     bool contains(const value_type x) const {
-        // todo
+        return find(x) != m_set.end();
     }
-    bool isSameSegment(const value_type left, const value_type right) const {
-        // todo
+    bool isSameSegment(const value_type x, const value_type y) const {
+        auto itr_x = find(x);
+        auto itr_y = find(y);
+        return itr_x != end() && itr_x == itr_y;
     }
 };
