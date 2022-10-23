@@ -25,7 +25,7 @@ public:
     iterator end() const noexcept {
         return m_set.end();
     }
-    bool isEmpty() const noexcept {
+    bool empty() const noexcept {
         return m_set.empty();
     }
     size_type size() const noexcept {
@@ -38,14 +38,35 @@ public:
         }
         return result;
     }
-    container_type asSet() const noexcept {
+    container_type asSet() const {
         return m_set;
     }
-    std::vector<range_type> asVector() const noexcept {
+    std::vector<range_type> asVector() const {
         std::vector<range_type> result;
         for (const auto& range : m_set) {
             result.push_back(range);
         }
         return result;
+    }
+    std::pair<iterator, bool> insert(const value_type left, const value_type right) {
+        // todo
+    }
+    void erase(const value_type left, const value_type right) {
+        // todo
+    }
+    iterator find(const value_type left, const value_type right) const {
+        // todo
+    }
+    iterator find(const value_type x) const {
+        // todo
+    }
+    bool contains(const value_type left, const value_type right) const {
+        // todo
+    }
+    bool contains(const value_type x) const {
+        // todo
+    }
+    bool isSameSegment(const value_type left, const value_type right) const {
+        // todo
     }
 };
