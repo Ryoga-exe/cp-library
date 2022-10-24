@@ -49,50 +49,33 @@ public:
         }
         return result;
     }
-    std::pair<iterator, bool> insert(const value_type left, const value_type right) {
+    std::pair<iterator, bool> insert(value_type left, value_type right) {
         assert(left <= right);
         if (left == right) {
             return { m_set.end(), false };
         }
-        auto itr = m_set.lower_bound({ left, right });
-        if (itr != m_set.end() && itr->first == left) {
-            return { itr, false };
-        }
-        if (itr != m_set.begin()) {
-            if (const auto prev_itr = std::prev(itr); prev_itr->first != left && right <= prev_itr->second) {
-                return { std::prev(itr), false };
+        auto itr_l = m_set.lower_bound({ left + 1, left + 1 });
+        auto itr_r = m_set.lower_bound({ right + 1, right + 1 });
+        if (itr_l != m_set.begin()) {
+            if (std::prev(itr_l)->second >= left) {
+                itr_l--;
             }
         }
-        itr = m_set.emplace_hint(itr, left, right);
-        while (itr != std::prev(m_set.end()) && std::next(itr)->first <= itr->second) {
-            if (std::next(itr)->second <= itr->second) {
-                m_set.erase(std::next(itr));
-            }
-            else {
-                itr = m_set.emplace_hint(std::next(itr), itr->first, std::next(itr)->second);
-                m_set.erase(std::prev(itr));
-                m_set.erase(std::next(itr));
-            }
+        auto tl = left, tr = right;
+        if (itr_l != itr_r) {
+            tl = std::min(left, itr_l->first);
+            tr = std::max(right, std::prev(itr_r)->second);
+            m_set.erase(itr_l, itr_r);
         }
-        while (itr != m_set.begin() && itr->first <= std::prev(itr)->second) {
-            if (itr->first == std::prev(itr)->first) {
-                m_set.erase(std::prev(itr));
-            }
-            else {
-                itr = m_set.emplace_hint(itr, std::prev(itr)->first, itr->second);
-                m_set.erase(std::prev(itr));
-                m_set.erase(std::next(itr));
-            }
-        }
-        return { itr, true };
+        return m_set.insert({ tl, tr });
     }
     void erase(const value_type left, const value_type right) {
         assert(left <= right);
         if (left == right) {
             return;
         }
-        auto itr_l = m_set.upper_bound({ left, left });
-        auto itr_r = m_set.upper_bound({ right, right });
+        auto itr_l = m_set.lower_bound({ left + 1, left + 1 });
+        auto itr_r = m_set.lower_bound({ right + 1, right + 1 });
         if (itr_l != m_set.begin()) {
             if (std::prev(itr_l)->second >= left) {
                 itr_l--;
@@ -112,21 +95,20 @@ public:
         }
     }
     iterator find(const value_type x) const {
-        auto itr = m_set.lower_bound({ x, x });
-        if (itr == begin() || (--itr)->second < x) {
+        auto itr = m_set.lower_bound({ x + 1, x + 1 });
+        if (itr == begin() || (--itr)->second <= x) {
             return m_set.end();
         }
         return itr;
     }
     iterator find(const value_type left, const value_type right) const {
         assert(left <= right);
-        auto itr_l = find(left);
-        auto itr_r = find(right);
-        if (itr_l == m_set.end() || itr_r == m_set.end()) {
+        auto itr = find(left);
+        if (itr == m_set.end()) {
             return m_set.end();
         }
-        if (itr_l == itr_r) {
-            return itr_l;
+        if (right <= itr->second) {
+            return itr;
         }
         else {
             return m_set.end();
@@ -138,10 +120,5 @@ public:
     }
     bool contains(const value_type x) const {
         return find(x) != m_set.end();
-    }
-    bool isSameSegment(const value_type x, const value_type y) const {
-        auto itr_x = find(x);
-        auto itr_y = find(y);
-        return itr_x != end() && itr_x == itr_y;
     }
 };
