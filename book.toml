@@ -16,3 +16,7 @@ edit-url-template = "https://github.com/Ryoga-exe/cp-library/tree/main/{path}"
 mathjax-support = true
 site-url = "/cp-library/"
 input-404 = "404.md"
+
+[output.html.fold]
+enable = true
+level = 1
