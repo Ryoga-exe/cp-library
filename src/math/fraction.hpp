@@ -4,9 +4,8 @@
 
 /// start
 /// @prefix cpFraction
-/// @description Structure representing a fraction : 分数を表す構造体
+/// @description Structure representing a fraction : 分数を表す構造体 (値は常に約分された状態で保持されます)
 /// @isFileTemplate false
-// p/q
 struct Fraction {
 public:
     using value_type = long long;
