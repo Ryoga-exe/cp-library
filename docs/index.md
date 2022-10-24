@@ -19,5 +19,5 @@ Twitter で [@Ryoga_exe](https://twitter.com/Ryoga_exe) をメンションする
 
 ライブラリ本体とドキュメントにおける著作権等の権利は CC0 に従って放棄します。
 
-Licensed under a CC0 license. See [LICENSE file](/LICENSE) for more further details.
+Licensed under a CC0 license. See [LICENSE file](https://github.com/Ryoga-exe/cp-library/blob/main/LICENSE) for more further details.
 
