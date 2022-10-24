@@ -32,7 +32,7 @@ public:
     size_type size() const noexcept {
         return m_set.size();
     }
-    value_type coveredLength() noexcept {
+    value_type coveredLength() const noexcept {
         value_type result = 0;
         for (const auto& [l, r] : m_set) {
             result += (r - l);
