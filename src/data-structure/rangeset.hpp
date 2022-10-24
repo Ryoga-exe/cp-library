@@ -96,7 +96,7 @@ public:
     }
     iterator find(const value_type x) const {
         auto itr = m_set.lower_bound({ x + 1, x + 1 });
-        if (itr == begin() || (--itr)->second <= x) {
+        if (itr == m_set.begin() || (--itr)->second <= x) {
             return m_set.end();
         }
         return itr;
