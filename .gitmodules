@@ -1,0 +1,3 @@
+[submodule "src/debug/debug_print"]
+	path = src/debug/debug_print
+	url = https://gist.github.com/1e5e5cd269cfe16a76988378a60e2ca3.git
