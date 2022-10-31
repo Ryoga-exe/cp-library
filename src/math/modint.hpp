@@ -7,12 +7,39 @@
 /// @description ModInt : 自動で mod を取ってくれる構造体
 /// @isFileTemplate false
 template<long long m, std::enable_if_t<(1 <= m)>* = nullptr>
-struct modint {
+struct ModInt {
 public:
-    constexpr modint(const long long x = 0) : m_value((x % m + m) % m) {}
-    constexpr long long value() const noexcept { return m_value; }
-    constexpr modint pow(long long n) const noexcept {
-        modint res(1), mul = *this;
+    using value_type = unsigned long long;
+    using signed_value_type = std::make_signed_t<value_type>;
+private:
+    value_type m_value = 0;
+    static constexpr value_type umod() noexcept { return static_cast<value_type>(m); }
+public:
+    ModInt() = default;
+    ModInt(const ModInt&) = default;
+    ModInt(ModInt&&) noexcept = default;
+    constexpr ModInt(const signed_value_type x) noexcept : m_value((x % m + m) % m) {}
+    constexpr ModInt& operator =(const ModInt&) = default;
+    constexpr ModInt& operator =(ModInt&&) noexcept = default;
+    constexpr ModInt& operator =(const signed_value_type x) { m_value = (x % m + m) % m; return *this; }
+    inline constexpr value_type value() const noexcept { return m_value; }
+    explicit inline constexpr operator value_type() const noexcept { return m_value; }
+    explicit inline constexpr operator signed_value_type() const noexcept { return static_cast<signed_value_type>(m_value); }
+    explicit inline constexpr operator int() const noexcept { return static_cast<int>(m_value); }
+    static ModInt raw(const value_type& x) { ModInt tmp; tmp.m_value = x; return tmp; }
+    ModInt& operator++() { m_value++; if (m_value == umod()) m_value = 0; return *this; }
+    ModInt& operator--() { if (m_value == 0) m_value = umod(); m_value--; return *this; }
+    ModInt operator++(int) { ModInt tmp(*this); ++(*this); return tmp; }
+    ModInt operator--(int) { ModInt tmp(*this); --(*this); return tmp; }
+    ModInt& operator +=(const ModInt& rhs) { m_value += rhs.m_value; if (m_value >= umod()) m_value -= umod(); return *this; }
+    ModInt& operator -=(const ModInt& rhs) { m_value -= rhs.m_value; if (m_value >= umod()) m_value += umod(); return *this; }
+    ModInt& operator *=(const ModInt& rhs) { m_value = (m_value * rhs.m_value) % umod(); return *this; }
+    ModInt& operator /=(const ModInt& rhs) { return *this = *this * rhs.inv(); }
+    ModInt& operator ^=(const long long rhs) { return *this = pow(rhs); }
+    ModInt operator +() const { return *this; }
+    ModInt operator -() const { return ModInt() - *this; }
+    ModInt pow(long long n) const {
+        ModInt res(1), mul = *this;
         while(n > 0) {
             if (n & 1) res *= mul;
             mul *= mul;
@@ -20,42 +47,26 @@ public:
         }
         return res;
     }
-    constexpr modint inv() const noexcept {
+    ModInt inv() const {
         long long a = m_value, b = m, u = 1, v = 0;
         while(b) {
             long long t = a / b;
             std::swap(a -= t * b, b);
             std::swap(u -= t * v, v);
         }
-        return modint(u);
+        return ModInt(u);
     }
-    inline constexpr bool operator==(const modint& other) const noexcept { return m_value == other.m_value; }
-    inline constexpr bool operator!=(const modint& other) const noexcept { return m_value != other.m_value; }
-    inline constexpr modint& operator++() noexcept { m_value++; if (m_value == m) m_value = 0; return *this;}
-    inline constexpr modint& operator--() noexcept { if (m_value == 0) m_value = m; m_value--; return *this;}
-    inline constexpr modint& operator++(int) noexcept { modint res = *this; ++(*this); return res; }
-    inline constexpr modint& operator--(int) noexcept { modint res = *this; --(*this); return res; }
-    inline constexpr modint& operator=(const modint& other) noexcept { m_value = other.m_value; return *this; }
-    inline constexpr modint& operator=(const long long other) noexcept { m_value = (other % m + m) % m; return *this; }
-    inline constexpr modint& operator+=(const modint& other) noexcept { m_value += other.m_value; if (m_value >= m) m_value -= m; return *this; }
-    inline constexpr modint& operator-=(const modint& other) noexcept { m_value -= other.m_value; if (m_value < m) m_value += m; return *this; }
-    inline constexpr modint& operator*=(const modint& other) noexcept { m_value = m_value * other.m_value % m; return *this; }
-    inline constexpr modint& operator/=(const modint& other) noexcept { (*this) *= other.inv(); return *this; }
-    inline constexpr modint operator+(const modint& other) const noexcept { return modint(*this) += other; }
-    inline constexpr modint operator-(const modint& other) const noexcept { return modint(*this) -= other; }
-    inline constexpr modint operator*(const modint& other) const noexcept { return modint(*this) *= other; }
-    inline constexpr modint operator/(const modint& other) const noexcept { return modint(*this) /= other; }
-    inline constexpr modint operator+() const noexcept { return *this; }
-    inline constexpr modint operator-() const noexcept { return modint(0) - modint(*this); }
-    friend ostream &operator<<(ostream &os, const modint& p) {
-        return os << p.value();
-    }
-    friend istream &operator>>(istream &is, modint &p) {
+    friend inline constexpr ModInt operator +(const ModInt& lhs, const ModInt& rhs) { return ModInt(lhs) += rhs; }
+    friend inline constexpr ModInt operator -(const ModInt& lhs, const ModInt& rhs) { return ModInt(lhs) -= rhs; }
+    friend inline constexpr ModInt operator *(const ModInt& lhs, const ModInt& rhs) { return ModInt(lhs) *= rhs; }
+    friend inline constexpr ModInt operator /(const ModInt& lhs, const ModInt& rhs) { return ModInt(lhs) /= rhs; }
+    friend inline constexpr bool operator==(const ModInt& lhs, const ModInt& rhs) { return lhs.m_value == rhs.m_value; }
+    friend inline constexpr bool operator!=(const ModInt& lhs, const ModInt& rhs) { return !(lhs == rhs); }
+    friend inline std::ostream& operator <<(std::ostream& out, const ModInt& mint) { return out << mint.value(); }
+    friend inline std::istream& operator >>(std::istream& is, ModInt& mint) {
         long long tmp;
         is >> tmp;
-        p = modint(tmp);
-        return (is);
+        mint = ModInt(tmp);
+        return is;
     }
-private:
-    long long m_value;
 };
