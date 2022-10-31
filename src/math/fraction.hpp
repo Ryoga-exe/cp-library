@@ -1,6 +1,7 @@
 #include <cmath>
 #include <numeric>
 #include <utility>
+#include <iostream>
 
 /// start
 /// @prefix cpFraction
@@ -46,4 +47,7 @@ public:
     Fraction& operator -=(const Fraction& rhs) noexcept { *this = *this - rhs; return *this; }
     Fraction& operator *=(const Fraction& rhs) noexcept { *this = *this * rhs; return *this; }
     Fraction& operator /=(const Fraction& rhs) noexcept { *this = *this / rhs; return *this; }
+    friend inline std::ostream& operator <<(std::ostream& out, const Fraction& frac) {
+        return out << frac.num() << '/' << frac.den();
+    }
 };
