@@ -7,8 +7,8 @@
 /// @isFileTemplate false
 struct UnionFind {
     std::vector<int> par;
-    inline UnionFind(const size_t n) noexcept : par(n, -1) {}
-    inline void reset(const size_t n) noexcept { par.assign(n, -1); }
+    inline UnionFind(const size_t n) : par(n, -1) {}
+    inline void reset(const size_t n) { par.assign(n, -1); }
     inline int root(const size_t x) noexcept { return (par[x] < 0 ? x : par[x] = root(par[x])); }
     inline bool unite(size_t x, size_t y) noexcept {
         x = root(x); y = root(y);

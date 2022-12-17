@@ -19,7 +19,7 @@ public:
 private:
     container_type m_set;
 public:
-    explicit RangeSet() = default;
+    RangeSet() = default;
     iterator begin() const noexcept {
         return m_set.begin();
     }
