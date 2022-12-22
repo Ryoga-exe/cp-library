@@ -17,7 +17,7 @@
 ## Code
 
 ```cpp
-{{ #include ../../src/data-structure/rangeset.hpp }}
+{{ #include ../../src/data-structure/RangeSet.hpp }}
 ```
 
 ## Example
