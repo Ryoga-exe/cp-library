@@ -2,7 +2,7 @@
 #include <queue>
 #include <utility>
 #include <functional>
-#include "weightedgraph.hpp"
+#include "WeightedGraph.hpp"
 
 /// start
 /// @prefix cpDijkstra
