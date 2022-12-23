@@ -2,6 +2,10 @@
 #include <type_traits>
 #include <utility>
 
+/// start
+/// @prefix cpMonoidXOR
+/// @description Monoid::XOR : モノイド (XOR)
+/// @isFileTemplate false
 namespace Monoid {
     template <class Type>
     struct XOR {

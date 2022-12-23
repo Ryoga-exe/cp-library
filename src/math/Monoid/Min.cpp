@@ -4,6 +4,10 @@
 #include <algorithm>
 #include <limits>
 
+/// start
+/// @prefix cpMonoidMin
+/// @description Monoid::Min : モノイド (最小値)
+/// @isFileTemplate false
 namespace Monoid {
     template <class Type>
     struct Min {

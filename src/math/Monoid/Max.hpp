@@ -4,6 +4,10 @@
 #include <algorithm>
 #include <limits>
 
+/// start
+/// @prefix cpMonoidMax
+/// @description Monoid::Max : モノイド (最大値)
+/// @isFileTemplate false
 namespace Monoid {
     template <class Type>
     struct Max {

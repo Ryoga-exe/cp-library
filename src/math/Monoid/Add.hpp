@@ -2,6 +2,10 @@
 #include <type_traits>
 #include <utility>
 
+/// start
+/// @prefix cpMonoidAdd
+/// @description Monoid::Add : モノイド (加法)
+/// @isFileTemplate false
 namespace Monoid {
     template <class Type>
     struct Add {

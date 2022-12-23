@@ -3,6 +3,10 @@
 #include <utility>
 #include <numeric>
 
+/// start
+/// @prefix cpMonoidGCD
+/// @description Monoid::GCD : モノイド (最大公約数)
+/// @isFileTemplate false
 namespace Monoid {
     template <class Type>
     struct GCD {
