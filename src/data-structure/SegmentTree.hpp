@@ -4,33 +4,8 @@
 
 /// start
 /// @prefix cpSegmentTree
-/// @description SegmentTree : セグメント木
+/// @description SegmentTree : セグメント木 ; math/Monoid と一緒に使う
 /// @isFileTemplate false
-namespace Monoid {
-    template <class Type>
-    struct Add {
-        using value_type = Type;
-        static constexpr bool Invertible = std::is_signed_v<Type>;
-        
-        [[nodiscard]]
-        static constexpr value_type Identity() noexcept(std::is_nothrow_default_constructible_v<value_type>) {
-            return value_type{};
-        }
-
-        [[nodiscard]]
-        static constexpr value_type Operation(const value_type& a, const value_type& b) noexcept(noexcept(std::declval<value_type>() + std::declval<value_type>())) {
-            return (a + b);
-        }
-
-        [[nodiscard]]
-        static constexpr value_type Inverse(const value_type& x) noexcept(noexcept(-std::declval<value_type>())) {
-            return -x;
-        }
-    };
-}
-
-// ==================================================
-
 template <class CommutativeMonoid, class Container = std::vector<typename CommutativeMonoid::value_type>>
 class SegmentTree {
 public:
