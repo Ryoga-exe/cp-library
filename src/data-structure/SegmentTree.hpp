@@ -21,7 +21,7 @@ public:
         }
         m_segment.assign(2 * m_leafSize, CommutativeMonoid::Identity());
     }
-    constexpr SegmentTree(const container_type& v) noexcept(std::is_nothrow_constructible_v<Container, size_t, const value_type&>) : m_size(v.size()) {
+    explicit constexpr SegmentTree(const container_type& v) noexcept(std::is_nothrow_constructible_v<Container, size_t, const value_type&>) : m_size(v.size()) {
         for (m_leafSize = 1; m_leafSize < m_size;) {
             m_leafSize <<= 1;
         }
@@ -68,21 +68,28 @@ public:
     constexpr value_type prod(size_t l, size_t r) const {
         assert(0 <= l && l <= r && r <= m_size);
         auto sml = CommutativeMonoid::Identity();
-		auto smr = CommutativeMonoid::Identity();
-		for(l += m_leafSize, r += m_leafSize; l < r; l >>= 1, r >>= 1) {
-			if (l & 1) {
+        auto smr = CommutativeMonoid::Identity();
+        for(l += m_leafSize, r += m_leafSize; l < r; l >>= 1, r >>= 1) {
+            if (l & 1) {
                 sml = CommutativeMonoid::Operation(sml, m_segment[l++]);
             }
-			if (r & 1) {
+            if (r & 1) {
                 smr = CommutativeMonoid::Operation(m_segment[--r], smr);
             }
-		}
-		return CommutativeMonoid::Operation(sml, smr);
+        }
+        return CommutativeMonoid::Operation(sml, smr);
     }
-    constexpr value_type all_prod() const {
+    constexpr value_type allProd() const {
         return m_segment[1];
     }
-
+    template<class F>
+    size_t findFirst(const size_t l, const F& check) const {
+        return 0;
+    }
+    template<class F>
+    size_t findLast(const size_t l, const F& check) const {
+        return 0;
+    }
 private:
     size_t m_size = 0;
     size_t m_leafSize = 1;
