@@ -83,11 +83,60 @@ public:
         return m_segment[1];
     }
     template<class F>
-    size_t findFirst(const size_t l, const F& check) const {
-        return 0;
+    constexpr size_t findFirst(const size_t l, const F& check) const {
+        assert(0 <= l && l <= m_size);
+        assert(check(CommutativeMonoid::Identity()));
+        if (l == m_size) {
+            return m_size;
+        }
+        l += m_leafSize;
+        auto sm = CommutativeMonoid::Identity();
+        do {
+            while (l % 2 == 0) {
+                l >>= 1;
+            }
+            if (!check(CommutativeMonoid::Operation(sm, m_segment[l]))) {
+                while (l < m_leafSize) {
+                    l <<= 1;
+                    if (check(CommutativeMonoid::Operation(sm, m_segment[l]))) {
+                        sm = CommutativeMonoid::Operation(sm, m_segment[l]);
+                        l++;
+                    }
+                }
+                return l - m_leafSize;
+            }
+            sm = CommutativeMonoid::Operation(sm, m_segment[l]);
+            l++;
+        } while ((static_cast<signed>(l) & -static_cast<signed>(l)) != static_cast<signed>(l));
+        return m_size;
     }
     template<class F>
-    size_t findLast(const size_t l, const F& check) const {
+    constexpr size_t findLast(const size_t r, const F& check) const {
+        assert(0 <= l && l <= m_size);
+        assert(check(CommutativeMonoid::Identity()));
+        if (r == 0) {
+            return 0;
+        }
+        r += m_leafSize;
+        auto sm = CommutativeMonoid::Identity();
+        do {
+            r--;
+            while (r > 1 && (r % 2)) {
+                r >>= 1;
+            }
+            if (!check(CommutativeMonoid::Operation(m_segment[r], sm))) {
+                while (r < m_leafSize) {
+                    r <<= 1;
+                    r++;
+                    if (check(CommutativeMonoid::Operation(m_segment[r], sm))) {
+                        sm = check(CommutativeMonoid::Operation(m_segment[r], sm);
+                        r--;
+                    }
+                }
+                return r + 1 - m_leafSize;
+            }
+            sm = CommutativeMonoid::Operation(m_segment[r], sm);
+        } while ((static_cast<signed>(r) & -static_cast<signed>(r)) != static_cast<signed>(r));
         return 0;
     }
 private:
@@ -95,7 +144,7 @@ private:
     size_t m_leafSize = 1;
     container_type m_segment;
 
-    constexpr void update(size_t p) {
+    inline constexpr void update(size_t p) {
         while (p >>= 1) {
             m_segment[p] = CommutativeMonoid::Operation(m_segment[2 * p], m_segment[2 * p + 1]);
         }
