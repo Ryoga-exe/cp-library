@@ -83,7 +83,7 @@ public:
         return m_segment[1];
     }
     template<class F>
-    constexpr size_t findFirst(const size_t l, const F& check) const {
+    constexpr size_t findFirst(size_t l, const F& check) const {
         assert(0 <= l && l <= m_size);
         assert(check(CommutativeMonoid::Identity()));
         if (l == m_size) {
@@ -111,8 +111,8 @@ public:
         return m_size;
     }
     template<class F>
-    constexpr size_t findLast(const size_t r, const F& check) const {
-        assert(0 <= l && l <= m_size);
+    constexpr size_t findLast(size_t r, const F& check) const {
+        assert(0 <= r && r <= m_size);
         assert(check(CommutativeMonoid::Identity()));
         if (r == 0) {
             return 0;
@@ -129,7 +129,7 @@ public:
                     r <<= 1;
                     r++;
                     if (check(CommutativeMonoid::Operation(m_segment[r], sm))) {
-                        sm = check(CommutativeMonoid::Operation(m_segment[r], sm);
+                        sm = check(CommutativeMonoid::Operation(m_segment[r], sm));
                         r--;
                     }
                 }
