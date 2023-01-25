@@ -46,12 +46,12 @@ public:
     constexpr size_t leafSize() const noexcept {
         return m_leafSize;
     }
-    constexpr const_reference get(const size_t p) const {
+    constexpr const_reference at(const size_t p) const {
         assert(0 <= p && p < m_size);
         return m_segment[p + m_leafSize];
     }
     constexpr const_reference operator[](const size_t p) const {
-        return get(p);
+        return m_segment[p + m_leafSize];
     }
     constexpr void set(size_t p, const value_type& x) {
         assert(0 <= p && p < m_size);
