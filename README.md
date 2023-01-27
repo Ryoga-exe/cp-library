@@ -5,7 +5,7 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/ryoga-exe/cp-library)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://ryoga-exe.github.io/cp-library/)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/Ryoga_exe?color=1DA1F2&logo=twitter&style=flat)](https://twitter.com/intent/follow?screen_name=Ryoga_exe)
+[![Twitter Follow](https://img.shields.io/badge/follow-%40Ryoga__exe-1DA1F2?logo=twitter&style=flat)](https://twitter.com/intent/follow?screen_name=Ryoga_exe)
 [![AtCoder Ryoga_exe](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FRyoga_exe)](https://atcoder.jp/users/Ryoga_exe)
 
 ## What is this?｜これは何？
