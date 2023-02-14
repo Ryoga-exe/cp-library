@@ -12,7 +12,7 @@ namespace Monoid {
     template <class Type>
     struct Min {
         using value_type = Type;
-        static constexpr bool Invertible = std::is_signed_v<Type>;
+        static constexpr bool Invertible = false;
         
         [[nodiscard]]
         static constexpr value_type Identity() noexcept(std::is_nothrow_default_constructible_v<value_type>) {
